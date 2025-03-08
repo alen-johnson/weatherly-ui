@@ -1,0 +1,46 @@
+.card {
+    width: 342px;
+    height: 184px;
+    position: relative;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .background {
+    fill: linear-gradient(90deg, #5936b4 0%, #362a84 100%);
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+  
+  .cloud {
+    position: absolute;
+    right: 0;
+    top: -12px;
+  
+    svg {
+      height: 120px;
+    }
+  }
+  
+  .mainText {
+    font-size: 48px;
+    z-index: 2;
+  }
+  
+  .info {
+    display: flex;
+    justify-content: space-between;
+  
+    .textGray {
+      color: rgba(235, 235, 245, 0.6);
+    }
+  
+    .infoRight {
+      align-self: flex-end;
+    }
+  }
+  
