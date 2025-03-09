@@ -1,6 +1,29 @@
-import styles from './CurrentWeather.module.scss';
+"use client";
+
+import { useEffect, useState } from "react";
+import styles from "./CurrentWeather.module.scss";
+import { fetchCurrLocationWeatherData } from "@/utils/api";
+import WeatherIcon from "./WeatherIcon";
 
 export default function CurrentWeather() {
+  const [cityData, setCityData] = useState("");
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        const data = await fetchCurrLocationWeatherData(lat, lon);
+        if (data) {
+          setCityData(data);
+        }
+      });
+    }
+  }, []);
+
+  console.log(cityData);
+
   return (
     <div className={styles.card}>
       <svg
@@ -29,40 +52,33 @@ export default function CurrentWeather() {
           </linearGradient>
         </defs>
       </svg>
-      <div className={styles.cloud}>
-        <svg
-          fill="#000000"
-          preserveAspectRatio="xMidYMid meet"
-          className="iconify iconify--emojione"
-          role="img"
-          aria-hidden="true"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 64 64"
-        >
-          <g fill="#75d6ff">
-            <path d="M10.8 42.9c-.5 1.5-.1 3 1 3.4c1.1.4 2.4-.5 3-2c.6-1.8.7-4.1.2-6.9c-2.1 1.9-3.6 3.8-4.2 5.5"></path>
-            <path d="M13.2 57.4c.6-1.8.7-4.1.2-6.9c-2.1 1.8-3.6 3.7-4.2 5.5c-.5 1.5-.1 3 1 3.4c1.1.4 2.5-.5 3-2"></path>
-          </g>
-          <path
-            d="M24.5 31.9l-4.9 16.2h12.5L27.9 62l16.5-20.2H32.5l2.9-9.9z"
-            fill="#ffce31"
-          ></path>
-          <path
-            fill="#ffffff"
-            d="M18.2 32.5c-.8 0-1.6-.1-2.4-.4c-3.1-1-5.3-3.9-5.3-7.2c0-2.2 1-4.3 2.6-5.7c.4-.4.9-.7 1.4-1l.5-1.8c1.3-4.4 5.4-7.5 10-7.5c.5 0 .9 0 1.5.1c.4.1.8.1 1.2.3l.2-.4c1.9-3.3 5.4-5.4 9.2-5.4C43 3.5 47.7 8.2 47.7 14v1c.4.2.9.4 1.3.6c2.8 1.6 4.5 4.6 4.5 7.8c0 4.2-2.9 7.8-7 8.8c-.7.2-1.4.2-2 .2H18.2z"
-          ></path>
-        </svg>
-      </div>
-      <p className={styles.mainText}>24°</p>
-      <div className={styles.info}>
-        <div className={styles.infoLeft}>
-          <p>Today</p>
-          <p className={styles.textGray}>H:32° L: 16°</p>
-          <p>Kathmandu, Nepal</p>
-        </div>
-        <p className={styles.infoRight}>Mid Rain</p>
-      </div>
+
+      {cityData ? (
+        <>
+          <div className={styles.cloud}>
+            <WeatherIcon condition={cityData.current.condition.text} />
+          </div>
+          <p className={styles.mainText}>{cityData.current.temp_c}</p>
+          <div className={styles.info}>
+            <div className={styles.infoLeft}>
+              <p>Today</p>
+              <p className={styles.textGray}>
+                Humidity:{cityData.current.humidity}
+              </p>
+              <p>
+                {cityData.location.name},{cityData.location.country}
+              </p>
+            </div>
+            <p className={styles.infoRight}>
+              {cityData.current.condition.text}
+            </p>
+          </div>
+        </>
+      ) : (
+        <>
+          <p>Loading</p>
+        </>
+      )}
     </div>
   );
 }
