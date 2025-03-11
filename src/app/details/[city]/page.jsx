@@ -1,5 +1,6 @@
 "use client";
 
+import WeatherIcon from "@/components/CurrentWeather/WeatherIcon";
 import { Navbar } from "@/components/componentsIndex";
 import { fetchWeatherData } from "@/utils/api";
 import React, { use, useEffect, useState } from "react";
@@ -33,6 +34,9 @@ export default function page({ params }) {
         <div>
           <h1>{weatherData.location.name}</h1>
           <p>Temperature: {weatherData.current.temp_c}°C</p>
+          <p>{weatherData.current.condition.text}</p>
+          <WeatherIcon condition={weatherData.current.condition.text} />
+          
         </div>
       ) : (
         <div>

@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 import styles from "./CurrentWeather.module.scss";
 import { fetchCurrLocationWeatherData } from "@/utils/api";
-import WeatherIcon from "./WeatherIcon";
+import useLocationStore from "@/store/useLocationStore";
 
 export default function CurrentWeather() {
   const [cityData, setCityData] = useState("");
+  const {setLocation} = useLocationStore();
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -17,12 +18,15 @@ export default function CurrentWeather() {
         const data = await fetchCurrLocationWeatherData(lat, lon);
         if (data) {
           setCityData(data);
+          console.log(data)
+          setLocation(data.location.name)
+
         }
       });
     }
-  }, []);
+  }, [setLocation]);
 
-  console.log(cityData);
+  
 
   return (
     <div className={styles.card}>
@@ -56,9 +60,9 @@ export default function CurrentWeather() {
       {cityData ? (
         <>
           <div className={styles.cloud}>
-            <WeatherIcon condition={cityData.current.condition.text} />
+            <img src={cityData.current.condition.icon.replace("64x64", "128x128")} />
           </div>
-          <p className={styles.mainText}>{cityData.current.temp_c}</p>
+          <p className={styles.mainText}>{cityData.current.temp_c}°C</p>
           <div className={styles.info}>
             <div className={styles.infoLeft}>
               <p>Today</p>
@@ -75,9 +79,9 @@ export default function CurrentWeather() {
           </div>
         </>
       ) : (
-        <>
-          <p>Loading</p>
-        </>
+        <div className={styles.loaderContainer}>
+          <div className={styles.loader}></div>
+        </div>
       )}
     </div>
   );
