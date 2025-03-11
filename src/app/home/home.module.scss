@@ -11,10 +11,26 @@
 
     padding: 3rem;
     height: auto;
+
+    gap: 20px;
+
+}
+
+.current{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    h2{
+        font-size: larger;
+        color: rgb(110, 110, 166);
+    }
 }
 
 
 .forecast{
     display: flex;
+    flex-direction: column;
     gap: 20px
 }
