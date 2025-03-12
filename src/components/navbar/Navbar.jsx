@@ -2,7 +2,7 @@
 
 import styles from "./Navbar.module.scss";
 import * as React from "react";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -54,46 +54,34 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-
-
 export default function SearchAppBar() {
   const router = useRouter();
-  const [city, setCity] = React.useState("")
+  const [city, setCity] = React.useState("");
 
   const handleCitySearch = (e) => {
-    if (e.key === "Enter" && city.trim() !== ""){
+    if (e.key === "Enter" && city.trim() !== "") {
       router.push(`/details/${city.trim()}`);
     }
-  }
+  };
   return (
-
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar className={styles.navbar}>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="logo"
-            sx={{ mr: 2 }}
-          >
-            <img
-              className={styles.icon}
-              src="/weatherlyIcon.png"
-              alt="icon"
-              width="40"
-              height="40"
-            />
-          </IconButton>
+          <img
+            className={styles.icon}
+            src="/weatherlyIcon.png"
+            alt="icon"
+            width="40"
+            height="40"
+            onClick={() => router.push("/home")}
+          />
 
           <Typography
             className={styles.title}
             variant="h6"
             noWrap
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            Weatherly
-          </Typography>
+          ></Typography>
           <div className={styles.btns}>
             <Button color="inherit" onClick={() => router.push("/home")}>
               Home

@@ -1,14 +1,17 @@
 "use client";
 
-import WeatherIcon from "@/components/CurrentWeather/WeatherIcon";
-import { Navbar } from "@/components/componentsIndex";
+import { CurrWeather, Navbar } from "@/components/componentsIndex";
 import { fetchWeatherData } from "@/utils/api";
 import React, { use, useEffect, useState } from "react";
+import styles from "./details.module.scss";
 
 export default function page({ params }) {
   const { city } = use(params);
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
+  const [loadingMessage, setLoadingMessage] = useState(
+    `Searching for ${city} details ...`
+  );
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -23,24 +26,27 @@ export default function page({ params }) {
     };
 
     fetchdata();
+
+    const t = setTimeout(() => {
+      setLoadingMessage(
+        `No details found for ${city} or ${city} does not exist`
+      );
+    }, 5000);
   }, [city]);
   return (
-    <div>
+    <div className={styles.details}>
       <div>
         <Navbar />
       </div>
 
       {weatherData?.location ? (
-        <div>
-          <h1>{weatherData.location.name}</h1>
-          <p>Temperature: {weatherData.current.temp_c}°C</p>
-          <p>{weatherData.current.condition.text}</p>
-          <WeatherIcon condition={weatherData.current.condition.text} />
-          
+        <div className={styles.city}>
+          <h2>Current Weather</h2>
+          <CurrWeather cityData={weatherData} />
         </div>
       ) : (
         <div>
-          <p> No data found</p>
+          <p> {loadingMessage}</p>
         </div>
       )}
     </div>

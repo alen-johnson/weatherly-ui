@@ -1,33 +1,6 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import styles from "./CurrentWeather.module.scss";
-import { fetchCurrLocationWeatherData } from "@/utils/api";
-import useLocationStore from "@/store/useLocationStore";
 
-export default function CurrentWeather() {
-  const [cityData, setCityData] = useState("");
-  const {setLocation} = useLocationStore();
-
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-
-        const data = await fetchCurrLocationWeatherData(lat, lon);
-        if (data) {
-          setCityData(data);
-          console.log(data)
-          setLocation(data.location.name)
-
-        }
-      });
-    }
-  }, [setLocation]);
-
-  
-
+export default function CurrentWeather({ cityData }) {
   return (
     <div className={styles.card}>
       <svg
@@ -57,20 +30,22 @@ export default function CurrentWeather() {
         </defs>
       </svg>
 
-      {cityData ? (
+      {cityData && cityData.current ? (
         <>
           <div className={styles.cloud}>
-            <img src={cityData.current.condition.icon.replace("64x64", "128x128")} />
+            <img
+              src={cityData.current.condition.icon.replace("64x64", "128x128")}
+            />
           </div>
           <p className={styles.mainText}>{cityData.current.temp_c}°C</p>
           <div className={styles.info}>
             <div className={styles.infoLeft}>
               <p>Today</p>
               <p className={styles.textGray}>
-                Humidity:{cityData.current.humidity}
+                Humidity: {cityData.current.humidity}
               </p>
               <p>
-                {cityData.location.name},{cityData.location.country}
+                {cityData.location.name}, {cityData.location.country}
               </p>
             </div>
             <p className={styles.infoRight}>

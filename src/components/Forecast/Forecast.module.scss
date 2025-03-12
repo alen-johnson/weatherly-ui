@@ -1,8 +1,13 @@
-.container{
-    display: flex;
-    gap: 20px;
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
 
-    .card{
-        width: 170px;
-    }
+.card {
+  width: 160px;
+  height: 220px;
+  padding: 10px;
 }
