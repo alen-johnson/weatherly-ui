@@ -10,4 +10,54 @@
   width: 160px;
   height: 220px;
   padding: 10px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  background: linear-gradient(
+    135deg,
+    var(--temp-color, #4a90e2),
+    var(--temp-color-light, #67b6f4)
+  );
+
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+
+  img {
+    width: 60px;
+    height: 60px;
+    justify-self: center;
+    margin: 20px;
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+.forecastLoading{
+  height: 220px;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }

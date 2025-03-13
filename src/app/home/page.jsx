@@ -40,12 +40,12 @@ export default function Home() {
         </div>
         <div className={styles.forecast}>
           <h2>Forecast</h2>
-          <Forecast />
+          <Forecast city={location}/>
         </div>
         {location && (
-          <div>
-            <h2>Weather news around the world</h2>
-            <News city={location} region={cityData.location.region} />
+          <div className={styles.news}>
+            <h2>News</h2>
+            <News city={location} region={cityData?.location?.region} />
           </div>
         )}
       </div>

@@ -24,6 +24,8 @@
   img {
     width: 120px;
     height: 120px;
+    animation: float 3s ease-in-out infinite;
+
   }
 }
 
@@ -85,5 +87,15 @@
   80%,
   100% {
     transform: rotate(1turn);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
   }
 }

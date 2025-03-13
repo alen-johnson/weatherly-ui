@@ -41,9 +41,7 @@ export default function CurrentWeather({ cityData }) {
           <div className={styles.info}>
             <div className={styles.infoLeft}>
               <p>Today</p>
-              <p className={styles.textGray}>
-                Humidity: {cityData.current.humidity}
-              </p>
+             
               <p>
                 {cityData.location.name}, {cityData.location.country}
               </p>
