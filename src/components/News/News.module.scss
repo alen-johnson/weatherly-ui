@@ -1,0 +1,10 @@
+.news{
+    display: flex;
+    flex-direction: column;
+    gap:20px
+}
+
+.newscard{
+    display: flex;
+    flex-direction: row;
+}

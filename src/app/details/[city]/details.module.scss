@@ -1,0 +1,17 @@
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.cityDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+
+  h2 {
+    font-size: large;
+    margin: 10px;
+  }
+}
