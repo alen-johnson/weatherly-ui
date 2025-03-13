@@ -1,14 +1,23 @@
 "use client";
 
-import WeatherIcon from "@/components/CurrentWeather/WeatherIcon";
-import { Navbar } from "@/components/componentsIndex";
+import {
+  CurrWeather,
+  Forecast,
+  Navbar,
+  News,
+} from "@/components/componentsIndex";
 import { fetchWeatherData } from "@/utils/api";
 import React, { use, useEffect, useState } from "react";
+import styles from "../../home/home.module.scss";
+import { Button } from "@mui/material";
 
 export default function page({ params }) {
   const { city } = use(params);
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
+  const [loadingMessage, setLoadingMessage] = useState(
+    `Searching for ${city} details ...`
+  );
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -23,24 +32,53 @@ export default function page({ params }) {
     };
 
     fetchdata();
+
+    const t = setTimeout(() => {
+      setLoadingMessage(
+        `No details found for ${city} or ${city} does not exist`
+      );
+    }, 5000);
   }, [city]);
+
   return (
-    <div>
-      <div>
-        <Navbar />
-      </div>
+    <div className={styles.home}>
+      <Navbar />
 
       {weatherData?.location ? (
-        <div>
-          <h1>{weatherData.location.name}</h1>
-          <p>Temperature: {weatherData.current.temp_c}°C</p>
-          <p>{weatherData.current.condition.text}</p>
-          <WeatherIcon condition={weatherData.current.condition.text} />
-          
+        <div className={styles.weatherContainer}>
+          <div className={styles.current}>
+            <h2>Current Weather</h2>
+            <CurrWeather cityData={weatherData} />
+          </div>
+
+
+{/* add a drawer component over here  */}
+         {weatherData ?<div>
+          <p>Heat Index : {weatherData.current.heatindex_c} C</p>
+          <p>Pressure : {weatherData.current.pressure_in}</p>
+          <p>Uv  :{weatherData.current.uv}</p>
+          <p>Wind speed{weatherData.current.wind_kph}kph</p>
+          <p>{weatherData.current.heatindex_c}</p>
+          <p>{weatherData.current.heatindex_c}</p>
+
+          <Button>More detail</Button>
+
+            </div> :
+            <>
+            </>
+}
+          <div className={styles.forecast}>
+            <h2>Forecast</h2>
+            <Forecast city={city} />
+          </div>
+
+          <div>
+            <News city={city} region={weatherData.location.region} />
+          </div>
         </div>
       ) : (
         <div>
-          <p> No data found</p>
+          <p> {loadingMessage}</p>
         </div>
       )}
     </div>

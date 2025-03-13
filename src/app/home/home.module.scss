@@ -3,7 +3,7 @@
     flex-direction: column;
 }
 
-.container{
+.weatherContainer{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -32,5 +32,20 @@
 .forecast{
     display: flex;
     flex-direction: column;
+    
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    min-height: 400px;
     gap: 20px
+}
+
+.news{
+    display: flex;
+    flex-direction: column;
+
+    h2{
+        justify-self: center;
+        margin:0  30px 0;
+    }
 }
