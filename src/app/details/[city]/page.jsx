@@ -1,6 +1,6 @@
 "use client";
 
-import { CurrWeather, Navbar } from "@/components/componentsIndex";
+import { CurrWeather, Navbar, News } from "@/components/componentsIndex";
 import { fetchWeatherData } from "@/utils/api";
 import React, { use, useEffect, useState } from "react";
 import styles from "./details.module.scss";
@@ -33,6 +33,7 @@ export default function page({ params }) {
       );
     }, 5000);
   }, [city]);
+  
   return (
     <div className={styles.details}>
       <div>
@@ -40,9 +41,15 @@ export default function page({ params }) {
       </div>
 
       {weatherData?.location ? (
-        <div className={styles.city}>
-          <h2>Current Weather</h2>
-          <CurrWeather cityData={weatherData} />
+        <div>
+          <div className={styles.cityDetails}>
+            <h2>Current Weather</h2>
+            <CurrWeather cityData={weatherData} />
+          </div>
+
+          <div>
+            <News city={city} region={weatherData.location.region} />
+          </div>
         </div>
       ) : (
         <div>

@@ -16,7 +16,7 @@ export default function Forecast() {
     const fetchForecast = async () => {
       console.log(location);
       const data = await fetchForecastData(location);
-      console.log(data);
+      // console.log(data);
       if (data) {
         setForecastData(data);
       }
@@ -26,7 +26,7 @@ export default function Forecast() {
   }, [location]);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.forecast}>
       {forecastData ? (
         <>
           {forecastData.forecast.forecastday.slice(1).map((d, idx) => (
