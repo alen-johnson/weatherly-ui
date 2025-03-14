@@ -8,7 +8,7 @@ export default function UvIndexCard({ uvIndex }) {
 
   return (
     <div className={styles.uvCard}>
-      <h2>UV Index</h2>
+      <h2>UV INDEX</h2>
       <div className={styles.uvDetails}>
         <div className={styles.imgWrapper}>
           <img src={uvImage} alt="UV Level" />

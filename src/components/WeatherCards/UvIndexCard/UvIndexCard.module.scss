@@ -12,7 +12,6 @@
   width: 300px;
   height: 220px;
 
-
   h2 {
     color: white;
     font-size: 22px;
@@ -22,7 +21,6 @@
     color: white;
     font-size: 16px;
     margin: 5px;
-
   }
 }
 
@@ -30,13 +28,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
 
-  p{
+  p {
     font-weight: bold;
-  color: white;
+    color: white;
   }
-
 }
 
 .imgWrapper {
@@ -47,9 +43,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  margin-right: 20px;
   img {
-    width:60px;
+    width: 60px;
     height: auto;
   }
 }

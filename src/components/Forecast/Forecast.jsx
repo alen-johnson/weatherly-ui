@@ -1,11 +1,9 @@
 "use client";
 
-import { Card, CardContent } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import styles from "./Forecast.module.scss";
-import useLocationStore from "@/store/useLocationStore";
-import { fetchForecastData } from "@/utils/api";
 import { weekdayFromDate } from "@/utils/weekdayFromDate";
+import { fetchForecastData } from "@/utils/api/forecast";
 
 export default function Forecast({ city }) {
   const [forecastData, setForecastData] = useState(null);
@@ -15,7 +13,7 @@ export default function Forecast({ city }) {
     const fetchForecast = async () => {
       // console.log(city);
       const data = await fetchForecastData(city);
-      console.log(data);
+      // console.log(data);
       if (data) {
         setForecastData(data);
       }
