@@ -1,0 +1,158 @@
+.airQuality {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 20px 10px;
+  background: rgba(46, 125, 50, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  width: 300px;
+  height: 320px;
+
+  h2 {
+    color: #ffffff;
+    font-size: 22px;
+    margin: 5px;
+  }
+
+  p {
+    color: white;
+    font-size: 16px bold;
+    margin: 5px;
+  }
+}
+
+.aqDetails {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    font-weight: bolder;
+    color: white;
+  }
+}
+
+.imgWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  img {
+    width: 80px;
+    height: auto;
+  }
+}
+
+.aqValue {
+  font-size: 44px !important;
+  font-weight: bold;
+  color: white;
+}
+.aqiLabels {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 5px;
+
+  p {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+.aqiBarContainer {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  height: 12px;
+  background: linear-gradient(
+    to right,
+    #00e400,
+    #ffff00,
+    #ff7e00,
+    #ff0000,
+    #8f3f97,
+    #7e0023
+  );
+  border-radius: 10px;
+  margin: 5px 0;
+}
+
+.aqiMarker {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 18px;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
+}
+
+.dropdown {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+.container {
+  --color: #a5a5b0;
+  --size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--size);
+  user-select: none;
+  fill: var(--color);
+}
+
+.chevronDown {
+  position: absolute;
+  animation: keyframes-return 0.5s;
+  transition: transform 0.5s ease-in-out;
+}
+
+.rotated {
+  animation: keyframes-rotate 0.5s;
+  transform: rotate(180deg);
+}
+
+.hiddenCheckbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+@keyframes keyframes-rotate {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes keyframes-return {
+  0% {
+    transform: rotate(180deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}

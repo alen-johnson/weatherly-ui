@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const weekdayFromDate = (dateString) => {
     const date = new Date(dateString)
     const days = ["Sunday","Monday","Tueday","Wednesday","Thursday","Friday","Saturday"]

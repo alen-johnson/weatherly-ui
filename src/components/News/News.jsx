@@ -1,13 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import styles from "./News.module.scss";
-import { fetchNewsData } from "@/utils/api";
-import { useRouter } from "next/navigation";
+
+import { fetchNewsData } from "@/utils/api/news";
 
 export default function News({ city, region }) {
   const [newsData, setNewsData] = useState(null);
-  const router = useRouter();
-  
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -33,7 +31,7 @@ export default function News({ city, region }) {
       {newsData && newsData.length > 0 ? (
         <>
           {newsData.map((news, idx) => (
-            <div key={idx} className={styles.newsCard} onClick={() => router.push(`${news.url}`)}>
+            <div key={idx} className={styles.newsCard} onClick={() => window.open(news.url, "_blank")}>
               {news.urlToImage && (
                 <img
                   src={news.urlToImage}

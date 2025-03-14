@@ -1,6 +1,4 @@
-const WEATHER_API_URL = process.env.NEXT_PUBLIC_WEATHER_API_URL;
-const FORECAST_API_URL = process.env.NEXT_PUBLIC_FORECAST_API_URL;
-const NEWS_API_URL = process.env.NEXT_PUBLIC_NEWS_API_URL;
+import { WEATHER_API_URL } from "../constants";
 
 export const fetchWeatherData = async (city) => {
   try {
@@ -28,28 +26,16 @@ export const fetchCurrLocationWeatherData = async (latitude, longtitude) => {
   }
 };
 
-export const fetchForecastData = async (city) => {
+export const fetchAirQualityData = async (city) => {
   try {
-    const res = await fetch(`${FORECAST_API_URL}${city}`);
+    const res = await fetch(`${WEATHER_API_URL}${city}/air-quality`);
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }
-    return await res.json();
-  } catch (error) {
-    console.log("Error:", error);
-    return null;
-  }
-};
 
-export const fetchNewsData = async (city) => {
-  try {
-    const res = await fetch(`${NEWS_API_URL}${city}`);
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
     return await res.json();
   } catch (error) {
-    console.log("Error:", error);
+    console.log("Error: ", error);
     return null;
   }
 };

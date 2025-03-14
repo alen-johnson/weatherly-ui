@@ -1,0 +1,57 @@
+.uvCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 20px 10px;
+  background: rgba(106, 66, 199, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(13.2px);
+  -webkit-backdrop-filter: blur(13.2px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  width: 300px;
+  height: 220px;
+
+  h2 {
+    color: white;
+    font-size: 22px;
+    margin: 5px;
+  }
+  p {
+    color: white;
+    font-size: 16px;
+    margin: 5px;
+  }
+}
+
+.uvDetails {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    font-weight: bold;
+    color: white;
+  }
+}
+
+.imgWrapper {
+  background: rgba(118, 7, 203, 0.319);
+
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  img {
+    width: 60px;
+    height: auto;
+  }
+}
+
+.uvValue {
+  font-size: 44px !important;
+  font-weight: bold;
+  color: white;
+}
