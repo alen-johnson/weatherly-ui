@@ -10,6 +10,7 @@ import { fetchWeatherData } from "@/utils/api";
 import React, { use, useEffect, useState } from "react";
 import styles from "../../home/home.module.scss";
 import { Button } from "@mui/material";
+import { UvIndexCard } from "@/components/WeatherCards/weatherCardsIndex";
 
 export default function page({ params }) {
   const { city } = use(params);
@@ -22,7 +23,7 @@ export default function page({ params }) {
   useEffect(() => {
     const fetchdata = async () => {
       const data = await fetchWeatherData(city);
-      console.log(data);
+      // console.log(data);
 
       if (data) {
         setWeatherData(data);
@@ -46,9 +47,10 @@ export default function page({ params }) {
 
       {weatherData?.location ? (
         <div className={styles.weatherContainer}>
-          <div className={styles.current}>
-            <h2>Current Weather</h2>
+          <div className={styles.allDetails}>
             <CurrWeather cityData={weatherData} />
+            <UvIndexCard uvIndex={weatherData.current.uv}/>
+
           </div>
 
 

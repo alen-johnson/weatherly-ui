@@ -13,9 +13,9 @@ export default function Forecast({ city }) {
   useEffect(() => {
     if (!city) return;
     const fetchForecast = async () => {
-      console.log(city);
+      // console.log(city);
       const data = await fetchForecastData(city);
-      // console.log(data);
+      console.log(data);
       if (data) {
         setForecastData(data);
       }
