@@ -6,14 +6,16 @@ import {
   Navbar,
   News,
 } from "@/components/componentsIndex";
-import { fetchWeatherData } from "@/utils/api";
 import React, { use, useEffect, useState } from "react";
 import styles from "../../home/home.module.scss";
 import { Button } from "@mui/material";
+import { AirQualityCard, UvIndexCard } from "@/components/WeatherCards/weatherCardsIndex";
+import { fetchAirQualityData, fetchWeatherData } from "@/utils/api/weather";
 
 export default function page({ params }) {
   const { city } = use(params);
   const [weatherData, setWeatherData] = useState(null);
+  const [airQualityData, setAirQualityData] = useState(null);
   const [error, setError] = useState(null);
   const [loadingMessage, setLoadingMessage] = useState(
     `Searching for ${city} details ...`
@@ -21,13 +23,26 @@ export default function page({ params }) {
 
   useEffect(() => {
     const fetchdata = async () => {
-      const data = await fetchWeatherData(city);
-      console.log(data);
+      try {
+        const [weather, airQuality] = await Promise.all([
+          fetchWeatherData(city),
+          fetchAirQualityData(city),
+        ]);
 
-      if (data) {
-        setWeatherData(data);
-      } else {
-        setError("Failed to fetch weather data");
+        if (weather) {
+          setWeatherData(weather);
+        } else {
+          setError("Error Fetching weather data");
+        }
+
+        if (airQuality) {
+          setAirQualityData(airQuality);
+        } else {
+          setError("Error Fetchinf air quality data");
+        }
+      } catch (error) {
+        console.log("Error fetching data:", error);
+        setError("Failed to fetch data");
       }
     };
 
@@ -37,7 +52,7 @@ export default function page({ params }) {
       setLoadingMessage(
         `No details found for ${city} or ${city} does not exist`
       );
-    }, 5000);
+    }, 3000);
   }, [city]);
 
   return (
@@ -46,27 +61,12 @@ export default function page({ params }) {
 
       {weatherData?.location ? (
         <div className={styles.weatherContainer}>
-          <div className={styles.current}>
-            <h2>Current Weather</h2>
+          <div className={styles.allDetails}>
             <CurrWeather cityData={weatherData} />
+            <UvIndexCard uvIndex={weatherData.current.uv} />
+            <AirQualityCard aqData={airQualityData}/>
           </div>
 
-
-{/* add a drawer component over here  */}
-         {weatherData ?<div>
-          <p>Heat Index : {weatherData.current.heatindex_c} C</p>
-          <p>Pressure : {weatherData.current.pressure_in}</p>
-          <p>Uv  :{weatherData.current.uv}</p>
-          <p>Wind speed{weatherData.current.wind_kph}kph</p>
-          <p>{weatherData.current.heatindex_c}</p>
-          <p>{weatherData.current.heatindex_c}</p>
-
-          <Button>More detail</Button>
-
-            </div> :
-            <>
-            </>
-}
           <div className={styles.forecast}>
             <h2>Forecast</h2>
             <Forecast city={city} />
