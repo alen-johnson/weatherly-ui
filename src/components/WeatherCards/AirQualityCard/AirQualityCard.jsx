@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 
 export default function AirQualityCard({ aqData }) {
-  console.log(aqData);
+//   console.log(aqData);
   const [isChecked, setIsChecked] = useState(true);
   const AQI_MAX = 500;
   const position = (Math.floor(aqData.aqi.aqi) / AQI_MAX) * 100;
@@ -71,28 +71,28 @@ export default function AirQualityCard({ aqData }) {
           </svg>
         </label>
 
-        <Dialog open={open} onClose={handleModal} >
+        <Dialog open={open} onClose={handleModal}>
           <DialogTitle> Pollutants</DialogTitle>
           <DialogContent>
             <div className={styles.pollutantsTable}>
-            <table>
-              <thead>
-                <tr>
-                  <th>Pollutant</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pollutants.map((pollutant, index) => (
-                  <tr key={index}>
-                    <td>{pollutant.name}</td>
-                    <td>
-                      {pollutant.value} {pollutant.unit}
-                    </td>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Pollutant</th>
+                    <th>Value</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {pollutants.map((pollutant, index) => (
+                    <tr key={index}>
+                      <td>{pollutant.name}</td>
+                      <td>
+                        {pollutant.value} {pollutant.unit}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </DialogContent>
           <DialogActions>

@@ -9,13 +9,15 @@ import {
 import React, { use, useEffect, useState } from "react";
 import styles from "../../home/home.module.scss";
 import { Button } from "@mui/material";
-import { AirQualityCard, UvIndexCard } from "@/components/WeatherCards/weatherCardsIndex";
+import { AirQualityCard, DailyForecastCard, UvIndexCard } from "@/components/WeatherCards/weatherCardsIndex";
 import { fetchAirQualityData, fetchWeatherData } from "@/utils/api/weather";
+import { fetchForecastData } from "@/utils/api/forecast";
 
 export default function page({ params }) {
   const { city } = use(params);
   const [weatherData, setWeatherData] = useState(null);
   const [airQualityData, setAirQualityData] = useState(null);
+  const [forecastData, setForecastData] = useState(null)
   const [error, setError] = useState(null);
   const [loadingMessage, setLoadingMessage] = useState(
     `Searching for ${city} details ...`
@@ -24,9 +26,10 @@ export default function page({ params }) {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const [weather, airQuality] = await Promise.all([
+        const [weather, airQuality, forecast] = await Promise.all([
           fetchWeatherData(city),
           fetchAirQualityData(city),
+          fetchForecastData(city)
         ]);
 
         if (weather) {
@@ -38,7 +41,14 @@ export default function page({ params }) {
         if (airQuality) {
           setAirQualityData(airQuality);
         } else {
-          setError("Error Fetchinf air quality data");
+          setError("Error Fetching air quality data");
+        }
+
+        if(forecast){
+          console.log(forecast.forecast.forecastday[0].hour)
+          setForecastData(forecast.forecast.forecastday[0].hour)
+        }else{
+          setError("Error fetching forecast data")
         }
       } catch (error) {
         console.log("Error fetching data:", error);
@@ -65,6 +75,7 @@ export default function page({ params }) {
             <CurrWeather cityData={weatherData} />
             <UvIndexCard uvIndex={weatherData.current.uv} />
             <AirQualityCard aqData={airQualityData}/>
+            <DailyForecastCard forecastData={forecastData} />
           </div>
 
           <div className={styles.forecast}>
