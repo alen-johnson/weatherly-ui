@@ -8,74 +8,54 @@ import {
 } from "@/components/componentsIndex";
 import React, { use, useEffect, useState } from "react";
 import styles from "../../home/home.module.scss";
-import { Button } from "@mui/material";
-import { AirQualityCard, DailyForecastCard, UvIndexCard } from "@/components/WeatherCards/weatherCardsIndex";
-import { fetchAirQualityData, fetchWeatherData } from "@/utils/api/weather";
-import { fetchForecastData } from "@/utils/api/forecast";
 
-export default function page({ params }) {
+import {
+  AirQualityCard,
+  DailyForecastCard,
+  UvIndexCard,
+} from "@/components/WeatherCards/weatherCardsIndex";
+import { useFetchWeather } from "@/hooks/useFetchWeather";
+import { useFetchAirQuality } from "@/hooks/useFetchAirQuality";
+import { useFetchForecast } from "@/hooks/useFetchForecast";
+
+export default function Page({ params }) {
   const { city } = use(params);
-  const [weatherData, setWeatherData] = useState(null);
-  const [airQualityData, setAirQualityData] = useState(null);
-  const [forecastData, setForecastData] = useState(null)
-  const [error, setError] = useState(null);
   const [loadingMessage, setLoadingMessage] = useState(
     `Searching for ${city} details ...`
   );
 
+  const {
+    data: weatherData,
+    loading: weatherDataLoading,
+    error: weatherDataError,
+  } = useFetchWeather(city);
+  const {
+    data: airQualityData,
+    loading: airQualityDataLoading,
+    error: airQualityDataError,
+  } = useFetchAirQuality(city);
+  const {
+    data: forecastData,
+    loading: forecastDataLoading,
+    error: forecastDataError,
+  } = useFetchForecast(city);
+
   useEffect(() => {
-    const fetchdata = async () => {
-      try {
-        const [weather, airQuality, forecast] = await Promise.all([
-          fetchWeatherData(city),
-          fetchAirQualityData(city),
-          fetchForecastData(city)
-        ]);
-
-        if (weather) {
-          setWeatherData(weather);
-        } else {
-          setError("Error Fetching weather data");
-        }
-
-        if (airQuality) {
-          setAirQualityData(airQuality);
-        } else {
-          setError("Error Fetching air quality data");
-        }
-
-        if(forecast){
-          console.log(forecast.forecast.forecastday[0].hour)
-          setForecastData(forecast.forecast.forecastday[0].hour)
-        }else{
-          setError("Error fetching forecast data")
-        }
-      } catch (error) {
-        console.log("Error fetching data:", error);
-        setError("Failed to fetch data");
-      }
-    };
-
-    fetchdata();
-
     const t = setTimeout(() => {
-      setLoadingMessage(
-        `No details found for ${city} or ${city} does not exist`
-      );
+      setLoadingMessage(`No details found for ${city} or ${city} does not exist`);
     }, 3000);
   }, [city]);
 
   return (
     <div className={styles.home}>
       <Navbar />
-
       {weatherData?.location ? (
         <div className={styles.weatherContainer}>
           <div className={styles.allDetails}>
             <CurrWeather cityData={weatherData} />
             <UvIndexCard uvIndex={weatherData.current.uv} />
-            <AirQualityCard aqData={airQualityData}/>
-            <DailyForecastCard forecastData={forecastData} />
+            {airQualityData && <AirQualityCard aqData={airQualityData} />}
+            {forecastData && <DailyForecastCard forecastData={forecastData.forecast.forecastday[0].hour} />}
           </div>
 
           <div className={styles.forecast}>
@@ -89,7 +69,7 @@ export default function page({ params }) {
         </div>
       ) : (
         <div>
-          <p> {loadingMessage}</p>
+          <p>{loadingMessage}</p>
         </div>
       )}
     </div>

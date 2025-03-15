@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 
 export default function AirQualityCard({ aqData }) {
-//   console.log(aqData);
+  // console.log(aqData);
   const [isChecked, setIsChecked] = useState(true);
   const AQI_MAX = 500;
   const position = (Math.floor(aqData.aqi.aqi) / AQI_MAX) * 100;
