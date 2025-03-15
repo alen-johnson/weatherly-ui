@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import styles from "./AirQualityCard.module.scss";
-import { getAqDetails, getAqImage } from "../helpers/aqHelper";
+import { getAqDetails, getAqImage } from "../../../utils/helpers/aqHelper";
 import {
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
 } from "@mui/material";
+import { AQI_MAX } from "@/utils/constants";
 
 export default function AirQualityCard({ aqData }) {
   // console.log(aqData);
   const [isChecked, setIsChecked] = useState(true);
-  const AQI_MAX = 500;
   const position = (Math.floor(aqData.aqi.aqi) / AQI_MAX) * 100;
   const [open, setOpen] = useState(false);
 
