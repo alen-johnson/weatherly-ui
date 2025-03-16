@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./UvIndexCard.module.scss";
-import { getUvDetails, getUvImage } from "../helpers/uvIndexHelper";
+import { getUvDetails, getUvImage } from "../../../utils/helpers/uvIndexHelper";
 
 export default function UvIndexCard({ uvIndex }) {
   const { risk, message } = getUvDetails(uvIndex);
