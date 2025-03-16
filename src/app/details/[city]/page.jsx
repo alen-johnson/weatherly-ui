@@ -6,7 +6,7 @@ import {
   Navbar,
   News,
 } from "@/components/componentsIndex";
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import styles from "../../home/home.module.scss";
 
 import {
@@ -19,7 +19,7 @@ import { useFetchAirQuality } from "@/hooks/useFetchAirQuality";
 import { useFetchForecast } from "@/hooks/useFetchForecast";
 
 export default function Page({ params }) {
-  const { city } = params;
+  const { city } = use(params);
   const [loadingMessage, setLoadingMessage] = useState(`Searching for ${city} details ...`);
   const [timeoutReached, setTimeoutReached] = useState(false);
 
