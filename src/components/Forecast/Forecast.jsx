@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import styles from "./Forecast.module.scss";
-import { weekdayFromDate } from "@/utils/weekdayFromDate";
 import { fetchForecastData } from "@/utils/api/forecast";
+import { weekdayFromDate } from "@/utils/helpers/weekdayFromDate";
 
 export default function Forecast({ city }) {
   const [forecastData, setForecastData] = useState(null);
