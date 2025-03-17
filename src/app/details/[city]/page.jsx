@@ -2,6 +2,7 @@
 
 import {
   CurrWeather,
+  FAB,
   Forecast,
   Navbar,
   News,
@@ -16,16 +17,8 @@ import {
 import { useFetchWeather } from "@/hooks/useFetchWeather";
 import { useFetchAirQuality } from "@/hooks/useFetchAirQuality";
 import { useFetchForecast } from "@/hooks/useFetchForecast";
-import { Box, SpeedDial, SpeedDialAction, SpeedDialIcon } from "@mui/material";
-import FileCopyIcon from "@mui/icons-material/FileCopyOutlined";
-import SaveIcon from "@mui/icons-material/Save";
-import PrintIcon from "@mui/icons-material/Print";
-import ShareIcon from "@mui/icons-material/Share";
-import RefreshIcon from "@mui/icons-material/Refresh";
-
-import Sharebtn from "./sharebtn";
 import { throttle } from "@/utils/helpers/throttle";
-import { useRouter } from "next/navigation";
+
 
 export default function Page({ params }) {
   const { city } = use(params);
@@ -35,21 +28,6 @@ export default function Page({ params }) {
   );
   const [timeoutReached, setTimeoutReached] = useState(false);
 
-  const handleReload = useCallback(
-    throttle(() => {
-      setRefreshKey((prevKey) => prevKey + 1);
-      console.log("Window relaoded");
-    }, 5000),
-    []
-  );
-
-  const actions = [
-    { icon: <FileCopyIcon />, name: "Copy" },
-    { icon: <SaveIcon />, name: "Save" },
-    { icon: <PrintIcon />, name: "Print" },
-    { icon: <ShareIcon />, name: "Share" },
-    { icon: <RefreshIcon />, name: "Refresh Data", action: handleReload },
-  ];
   const {
     data: weatherData,
     loading: weatherDataLoading,
@@ -79,6 +57,14 @@ export default function Page({ params }) {
   const isError =
     !isLoading &&
     (!weatherData?.location || weatherDataError || forecastDataError);
+
+  //write reload fn here and pass it as prop for propper throttling
+    const handleReload = useCallback(
+      throttle(() => {
+        setRefreshKey((prevKey) => prevKey + 1);
+      }, 5000),
+      [setRefreshKey]
+    );
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -121,25 +107,13 @@ export default function Page({ params }) {
           </div>
 
           <div>
+            <p>News</p>
             <News city={city} region={weatherData.location.region} />
           </div>
         </div>
       )}
       <div>
-        <SpeedDial
-          ariaLabel="SpeedDial"
-          sx={{ position: "fixed", bottom: 16, right: 16 }}
-          icon={<SpeedDialIcon />}
-        >
-          {actions.map((action) => (
-            <SpeedDialAction
-              key={action.name}
-              icon={action.icon}
-              tooltipTitle={action.name}
-              onClick={action.action}
-            />
-          ))}
-        </SpeedDial>
+        <FAB forecastData={forecastData} handleReload={handleReload}/>
       </div>
     </div>
   );

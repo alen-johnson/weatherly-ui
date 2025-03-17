@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./AirQualityCard.module.scss";
 import { getAqDetails, getAqImage } from "../../../utils/helpers/aqHelper";
 import {
+  Button,
   Dialog,
   DialogActions,
   DialogContent,
@@ -96,7 +97,7 @@ export default function AirQualityCard({ aqData }) {
             </div>
           </DialogContent>
           <DialogActions>
-            <button onClick={handleModal}>Close</button>
+            <Button onClick={handleModal}>Close</Button>
           </DialogActions>
         </Dialog>
       </div>
