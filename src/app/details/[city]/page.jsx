@@ -13,6 +13,7 @@ import {
   AirQualityCard,
   DailyForecastCard,
   UvIndexCard,
+  WindCard,
 } from "@/components/WeatherCards/weatherCardsIndex";
 import { useFetchWeather } from "@/hooks/useFetchWeather";
 import { useFetchAirQuality } from "@/hooks/useFetchAirQuality";
@@ -45,6 +46,9 @@ export default function Page({ params }) {
     loading: forecastDataLoading,
     error: forecastDataError,
   } = useFetchForecast(city);
+
+  // console.log("weather=======>",weatherData)
+  // console.log("forecast=====>",forecastData)
 
   const isLoading =
     !weatherData ||
@@ -99,6 +103,7 @@ export default function Page({ params }) {
                 forecastData={forecastData.forecast.forecastday[0].hour}
               />
             )}
+            <WindCard windData={weatherData.current} />
           </div>
 
           <div className={styles.forecast}>
