@@ -1,0 +1,103 @@
+.windCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 15px 10px;
+  background: rgba(254, 254, 255, 0.462);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(235, 235, 235, 0.537);
+  backdrop-filter: blur(13.2px);
+  -webkit-backdrop-filter: blur(13.2px);
+  width: 350px;
+  height: 200px;
+
+  h2 {
+    color: #ffffff;
+    font-size: 22px;
+    margin: 5px;
+    font-weight: 900;
+  }
+
+  p {
+    color: white;
+    font-size: 16px bold;
+  }
+}
+
+.windSpeed {
+  display: flex;
+}
+
+.imgWrapper {
+  background: rgba(254, 254, 255, 0.126);
+  width: 70px;
+  height: 70px;
+
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  img {
+    width: 50px;
+    height: auto;
+  }
+}
+
+.values {
+  display: flex;
+  flex-direction: column;
+  p{
+    margin-left: 10px;
+    margin-top: 0;
+  }
+}
+
+.speedValueWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p{
+    font-weight: 600;
+    margin: 0;
+  }
+}
+.speedValue {
+  font-size: 40px !important;
+  font-weight: bold;
+  color: white;
+  line-height: 3rem;
+  margin: 0 10px 0 0;
+}
+
+.windDetails {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 15px;
+
+  .detailsChild {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .iconWrapper {
+    background: rgba(254, 254, 255, 0.126);
+    width: 40px;
+    height: 40px;
+
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+  }
+  img {
+    width: 30px;
+    height: auto;
+  }
+}
