@@ -1,0 +1,59 @@
+.visibility {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 20px 10px;
+    background: rgba(40, 79, 152, 0.369);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(79, 202, 255, 0.58);
+    backdrop-filter: blur(13.2px);
+    -webkit-backdrop-filter: blur(13.2px);
+    width: 350px;
+    height: 200px;
+  
+    h2 {
+      color: white;
+      font-size: 22px;
+      margin: 5px;
+      font-weight:900;
+  
+    }
+    p {
+      color: white;
+      font-size: 16px;
+      margin: 5px;
+    }
+  }
+  
+  .visibilityDetails {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    p {
+      font-weight: bold;
+      color: white;
+    }
+  }
+  
+  .imgWrapper {
+    background: rgba(255, 255, 255, 0.663);
+  
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    img {
+      width: 60px;
+      height: auto;
+    }
+  }
+  
+  .visibilityValue {
+    font-size: 44px !important;
+    font-weight: bold;
+    color: white;
+  }
+  
