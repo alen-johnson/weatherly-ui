@@ -3,13 +3,12 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 0 20px 10px;
-  background: rgba(46, 125, 50, 0.2);
+  background: rgba(68,6,79,254);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  width: 300px;
+  width: 350px;
   height: 320px;
 
   h2 {
@@ -99,6 +98,9 @@
 }
 
 .dropdown {
+  position: absolute;
+  bottom: 10;
+  left:  0;
   width: 100%;
   display: flex;
   justify-content: center;

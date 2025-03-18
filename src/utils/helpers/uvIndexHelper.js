@@ -1,4 +1,4 @@
-export const getUvDetails = (index) => {
+export function getUvDetails(index) {
     if (index < 0 || isNaN(index)) {
         return { risk: "Unknown", message: "Invalid UV index" };
     }

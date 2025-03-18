@@ -9,23 +9,20 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  width: 400px;
+  width: 350px;
   height: 300px;
-
- 
+  gap: 20px;
 }
 
-.title{
+.title {
   display: flex;
   width: 100%;
-justify-content: space-between;
-margin: 15px;
-
-
+  justify-content: space-between;
+  margin: 15px;
 
   h2 {
     color: #ffffff;
     font-size: 22px;
-    font-weight:900;
+    font-weight: 900;
   }
 }
