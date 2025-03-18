@@ -18,10 +18,10 @@ export function getUvDetails(index) {
 
 
 export function getUvImage(index) {
-    if (index <= 2) return "/lowUv.png";       
-    if (index <= 5) return "/moderateUv.png";  
-    if (index <= 7) return "/highUv.png";      
-    if (index <= 10) return "/veryhighUv.png";
-    return "/extremeUv.png";                    
+    if (index <= 2) return "/icons/lowUv.png";       
+    if (index <= 5) return "/icons/moderateUv.png";  
+    if (index <= 7) return "/icons/highUv.png";      
+    if (index <= 10) return "/icons/veryhighUv.png";
+    return "/icons/extremeUv.png";                    
   }
     

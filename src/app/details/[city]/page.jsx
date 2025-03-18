@@ -13,6 +13,7 @@ import {
   AirQualityCard,
   DailyForecastCard,
   UvIndexCard,
+  VisibilityCard,
   WindCard,
 } from "@/components/WeatherCards/weatherCardsIndex";
 import { useFetchWeather } from "@/hooks/useFetchWeather";
@@ -47,7 +48,7 @@ export default function Page({ params }) {
     error: forecastDataError,
   } = useFetchForecast(city);
 
-  // console.log("weather=======>",weatherData)
+  console.log("weather=======>",weatherData)
   // console.log("forecast=====>",forecastData)
 
   const isLoading =
@@ -104,6 +105,7 @@ export default function Page({ params }) {
               />
             )}
             <WindCard windData={weatherData.current} />
+            <VisibilityCard visibleDistance={weatherData.current.vis_km} />
           </div>
 
           <div className={styles.forecast}>

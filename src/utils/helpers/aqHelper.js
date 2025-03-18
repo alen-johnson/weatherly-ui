@@ -21,16 +21,16 @@ export function getAqDetails(category) {
 export function getAqImage(category) {
     switch (category) {
         case "Good":
-            return "/goodAQ.png";
+            return "/icons/goodAQ.png";
         case "Moderate":
-            return "/moderateAQ.png";
+            return "/icons/moderateAQ.png";
         case "Unhealthy for Sensitive Groups":
-            return "/unhealthySensAQ.png";
+            return "/icons/unhealthySensAQ.png";
         case "Unhealthy":
-            return "/unhealthyAQ.png";
+            return "/icons/unhealthyAQ.png";
         case "Very Unhealthy":
-            return "/veryUnhealthyAQ.png";
+            return "/icons/veryUnhealthyAQ.png";
         case "Hazardous":
-            return "/hazardousAQ.png";
+            return "/icons/hazardousAQ.png";
     }
 }

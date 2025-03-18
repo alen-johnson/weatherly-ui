@@ -14,7 +14,7 @@ export default function WindCard({ windData }) {
       <h2>Wind</h2>
       <div className={styles.windSpeed}>
         <div className={styles.imgWrapper}>
-          <img src="/wind.png" alt="windimill" />
+          <img src="/icons/wind.png" alt="windimill" />
         </div>
         <div className={styles.values}>
           <div className={styles.speedValueWrapper}>
@@ -30,7 +30,7 @@ export default function WindCard({ windData }) {
       <div className={styles.windDetails}>
         <div className={styles.detailsChild}>
           <div className={styles.iconWrapper}>
-            <img src="/thermometer.png" alt="temp" />
+            <img src="/icons/thermometer.png" alt="temp" />
           </div>
           <div>
             <p>{windData.windchill_c}°</p>
