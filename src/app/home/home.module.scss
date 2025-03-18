@@ -50,15 +50,19 @@
   display: grid;
   gap: 30px;
   padding: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   width: 100%;
-  justify-content: center;
+  justify-items: center;
   align-items: center;
+
+
 }
+
 
 .btn {
   width: 190px;
   height: 40px;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -88,6 +92,7 @@
     transform: translateX(0%);
     transition: 0.2s linear;
     animation: attention 1.2s linear infinite;
+    color: white;
   }
 
   &:hover {
@@ -103,6 +108,7 @@
     > .icon {
       transform: translateX(30%);
       animation: none;
+      
     }
   }
 }

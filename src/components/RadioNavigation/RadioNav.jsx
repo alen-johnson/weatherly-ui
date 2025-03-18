@@ -23,7 +23,7 @@ export default function RadioNav( {onSelect}) {
         />
         <img
           className={styles.name}
-          src="/thermometer.png"
+          src="/icons/thermometer.png"
           alt="Temperature"
         />
       </label>
@@ -38,7 +38,7 @@ export default function RadioNav( {onSelect}) {
         />
         <img
           className={styles.name}
-          src="/rainy.png"
+          src="/icons/rainy.png"
           alt="Precipitation"
         />
       </label>
@@ -53,7 +53,7 @@ export default function RadioNav( {onSelect}) {
         />
         <img
           className={styles.name}
-          src="/windy.png"
+          src="/icons/windy.png"
           alt="Wind"
         />
       </label>
