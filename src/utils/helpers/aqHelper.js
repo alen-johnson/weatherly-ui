@@ -1,4 +1,4 @@
-export const getAqDetails = (category) => {
+export function getAqDetails(category) {
     switch (category) {
         case "Good":
             return "Air quality is excellent!";

@@ -19,7 +19,7 @@ import { RadioNav } from '@/components/componentsIndex';
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
 export default function DailyForecastCard({ forecastData }) {
-  console.log(forecastData);
+  // console.log(forecastData);
 
   const icons = extractIcons(forecastData); // use icons to display on graphs later  
   const [content, setContent] = useState("Temperature");

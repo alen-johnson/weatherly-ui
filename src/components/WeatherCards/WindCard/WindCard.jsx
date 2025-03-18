@@ -6,8 +6,8 @@ import {
 } from "@/utils/helpers/windHelper";
 
 export default function WindCard({ windData }) {
-  console.log(windData);
-  console.log(windData.wind_kph);
+  // console.log(windData);
+  // console.log(windData.wind_kph);
 
   return (
     <div className={styles.windCard}>
