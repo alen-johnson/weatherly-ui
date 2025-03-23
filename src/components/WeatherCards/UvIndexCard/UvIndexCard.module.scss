@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 0 20px 10px;
-  background: rgba(51,30,103,254);
+  background: rgba(51, 30, 103, 0.996);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(205, 197, 197, 0.595);
   backdrop-filter: blur(13.2px);
@@ -12,16 +12,22 @@
   height: 220px;
 
   h2 {
-    color: white;
+    color: var(--colour-text-primary);
     font-size: 22px;
     margin: 5px;
-    font-weight:900;
-
+    font-weight: 900;
   }
+
   p {
-    color: white;
+    color: var(--colour-text-primary);
     font-size: 16px;
     margin: 5px;
+    font-weight: 800;
+  }
+
+  .msg {
+    color: var(--colour-text-secondary) !important;
+    font-weight: 100 !important;
   }
 }
 
@@ -29,22 +35,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  p {
-    font-weight: bold;
-    color: white;
-  }
 }
+
 
 .imgWrapper {
   background: rgba(118, 7, 203, 0.319);
-
   border-radius: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 10px;
+
   img {
     width: 60px;
     height: auto;
@@ -54,5 +56,5 @@
 .uvValue {
   font-size: 44px !important;
   font-weight: bold;
-  color: white;
+  color: var(--colour-text-primary);
 }

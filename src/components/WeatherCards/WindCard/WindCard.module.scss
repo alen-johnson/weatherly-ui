@@ -20,37 +20,39 @@
 
   p {
     color: white;
-    font-size: 16px bold;
+    font-size: 16px;
+    font-weight: 800;
   }
 }
 
-.windSpeed {
+.windSpeedSection {
   display: flex;
+}
+
+.windStats {
+  display: flex;
+  flex-direction: column;
+
+  p {
+    margin-left: 10px;
+    margin-top: 0;
+  }
 }
 
 .imgWrapper {
   background: rgba(254, 254, 255, 0.126);
   width: 70px;
   height: 70px;
-
   border-radius: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 10px;
+
   img {
     width: 50px;
     height: auto;
-  }
-}
-
-.values {
-  display: flex;
-  flex-direction: column;
-  p{
-    margin-left: 10px;
-    margin-top: 0;
   }
 }
 
@@ -59,11 +61,12 @@
   justify-content: center;
   align-items: center;
 
-  p{
+  p {
     font-weight: 600;
     margin: 0;
   }
 }
+
 .speedValue {
   font-size: 40px !important;
   font-weight: bold;
@@ -89,15 +92,25 @@
     background: rgba(254, 254, 255, 0.126);
     width: 40px;
     height: 40px;
-
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 10px;
   }
+
   img {
     width: 30px;
     height: auto;
   }
+
+  p {
+    font-weight: 800;
+  }
+}
+
+.type {
+  color: var(--colour-text-secondary) !important;
+  font-weight: 100 !important;
+  line-height: 15px !important;
 }

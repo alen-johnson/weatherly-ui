@@ -12,16 +12,21 @@
     height: 200px;
   
     h2 {
-      color: white;
+      color: var(--colour-text-primary);
       font-size: 22px;
       margin: 5px;
       font-weight:900;
   
     }
     p {
-      color: white;
+      color: var(--colour-text-primary);
       font-size: 16px;
+      font-weight: 800;
       margin: 5px;
+    }
+    .msg {
+      color: var(--colour-text-secondary) !important;
+      font-weight: 100 !important;
     }
   }
   
@@ -32,7 +37,12 @@
   
     p {
       font-weight: bold;
-      color: white;
+      color: var(--colour-text-primary);
+    }
+    .visibilityValue {
+      font-size: 44px !important;
+      font-weight: bold;
+      color: var(--colour-text-primary);
     }
   }
   
@@ -51,9 +61,5 @@
     }
   }
   
-  .visibilityValue {
-    font-size: 44px !important;
-    font-weight: bold;
-    color: white;
-  }
+  
   

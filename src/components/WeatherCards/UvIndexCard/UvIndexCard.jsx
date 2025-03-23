@@ -11,13 +11,14 @@ export default function UvIndexCard({ uvIndex }) {
       <h2>UV INDEX</h2>
       <div className={styles.uvDetails}>
         <div className={styles.imgWrapper}>
-          <img src={uvImage} alt="UV Level" />
+          <img src={uvImage} alt={`UV Index level: ${uvIndex}`}  />
         </div>
         <p className={styles.uvValue}>{uvIndex} </p>
         <p>UVI</p>
       </div>
       <p>{risk}</p>
-      <p>{message}</p>
+      <p className={styles.msg}>{message}</p>
+
     </div>
   );
 }

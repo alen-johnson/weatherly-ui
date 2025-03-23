@@ -33,7 +33,7 @@ export default function AirQualityCard({ aqData }) {
   return (
     <div className={styles.airQuality}>
       <h2>AIR QUALITY</h2>
-      <div className={styles.aqDetails}>
+      <div className={styles.airQualityValue}>
         <div className={styles.imgWrapper}>
           <img src={getAqImage(aqData.aqi.category)} alt="AQI" />
         </div>
@@ -41,8 +41,8 @@ export default function AirQualityCard({ aqData }) {
         <p>AQI</p>
       </div>
       <div>
-        <p>{aqData.aqi.category}</p>
-        <p>{getAqDetails(aqData.aqi.category)}</p>
+        <p className={styles.category}>{aqData.aqi.category}</p>
+        <p className={styles.categoryDetails}>{getAqDetails(aqData.aqi.category)}</p>
         <div className={styles.aqiLabels}>
           <p>Good</p>
           <p>Hazardous</p>

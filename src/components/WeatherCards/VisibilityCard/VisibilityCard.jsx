@@ -17,7 +17,7 @@ export default function VisibilityCard({visibleDistance}) {
       </div>
       <p>{category}</p>
 
-      <p>{message}</p>
+      <p className={styles.msg}>{message}</p>
     </div>
   )
 }
