@@ -12,6 +12,7 @@ import styles from "../../home/home.module.scss";
 import {
   AirQualityCard,
   DailyForecastCard,
+  PrecipitationCard,
   UvIndexCard,
   VisibilityCard,
   WindCard,
@@ -49,7 +50,7 @@ export default function Page({ params }) {
   } = useFetchForecast(city);
 
   console.log("weather=======>",weatherData)
-  // console.log("forecast=====>",forecastData)
+  console.log("forecast=====>",forecastData)
 
   const isLoading =
     !weatherData ||
@@ -106,6 +107,7 @@ export default function Page({ params }) {
             )}
             <WindCard windData={weatherData.current} />
             <VisibilityCard visibleDistance={weatherData.current.vis_km} />
+            <PrecipitationCard data={forecastData.forecast.forecastday[0]} dewPoint={weatherData.current.dewpoint_c} />
           </div>
 
           <div className={styles.forecast}>

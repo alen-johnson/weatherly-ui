@@ -3,3 +3,4 @@ export { default as AirQualityCard } from "./AirQualityCard/AirQualityCard";
 export { default as DailyForecastCard } from "./DailyForecastCard/DailyForecastCard";
 export { default as WindCard } from "./WindCard/WindCard";
 export { default as VisibilityCard } from "./VisibilityCard/VisibilityCard";
+export { default as PrecipitationCard } from "./PrecipitaionCard/PrecipitationCard";

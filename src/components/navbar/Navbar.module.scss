@@ -11,6 +11,15 @@
 .icon{
   height: 80px;
   width: 80px;
+  @media (max-width: 750px){
+    margin-right: 100px;
+  }
+  @media (max-width: 640px){
+    margin-right: 70px;
+  }
+  @media (max-width: 590px){
+    margin-right: 0;
+  }
 }
 
 
