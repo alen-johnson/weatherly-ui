@@ -1,0 +1,13 @@
+.sunMoon {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 20px 10px;
+    background: rgba(255, 156, 50, 0.433);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(245, 245, 245, 0.58);
+    backdrop-filter: blur(13.2px);
+    -webkit-backdrop-filter: blur(13.2px);
+    width: 350px;
+    height: 260px;
+}

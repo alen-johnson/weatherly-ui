@@ -4,10 +4,15 @@ import React, { useEffect, useState } from "react";
 import styles from "./Forecast.module.scss";
 import { fetchForecastData } from "@/utils/api/forecast";
 import { weekdayFromDate } from "@/utils/helpers/weekdayFromDate";
+import { Drawer } from "@mui/material";
 
 export default function Forecast({ city }) {
   const [forecastData, setForecastData] = useState(null);
+  const [open, setOpen] = useState(false)
 
+  const hanldeDrawer = () => {
+    setOpen(!open);
+  }
   useEffect(() => {
     if (!city) return;
     const fetchForecast = async () => {
@@ -30,6 +35,7 @@ export default function Forecast({ city }) {
             <div
               key={idx}
               className={styles.card}
+              onClick={hanldeDrawer}
               style={{
                 "--temp-color":
                   d.day.avgtemp_c > 30
@@ -63,6 +69,11 @@ export default function Forecast({ city }) {
           <p>Loading forecast details</p>
         </div>
       )}
+
+
+      <Drawer open={open} onClose={hanldeDrawer} >
+        blah
+      </Drawer>
     </div>
   );
 }

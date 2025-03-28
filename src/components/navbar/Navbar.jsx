@@ -82,7 +82,7 @@ export default function SearchAppBar() {
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           ></Typography>
           <div className={styles.btns}>
-            <Button color="inherit" onClick={() => router.push("/home")}>
+            <Button  color="inherit" onClick={() => router.push("/home")}>
               Home
             </Button>
             <Button

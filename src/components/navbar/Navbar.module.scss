@@ -1,7 +1,7 @@
 
 .navbar{
   display: block;
-
+  background-color: rgba(4,3,41,254);
   @media (max-width: 710px){
     display: flex !important;
     justify-content: space-between;
@@ -34,6 +34,13 @@
 .btns{
   display: flex;
   gap: 20px;
+
+  Button{
+
+    &:hover{
+      background-color: rgba(36, 33, 111, 0.665);
+    }
+  }
 }
 
 .searchbar{

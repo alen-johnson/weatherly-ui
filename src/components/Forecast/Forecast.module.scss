@@ -1,10 +1,11 @@
 .forecast {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  display: flex;
+  justify-content: center;
+  gap: 80px; 
   width: 100%;
-  justify-items: center;
-  align-items: center;
-  gap: 10px;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .card {
@@ -49,8 +50,11 @@
   }
 }
 
-.forecastLoading{
+.forecastLoading {
   height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes float {

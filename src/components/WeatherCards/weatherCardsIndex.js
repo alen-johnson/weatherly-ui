@@ -4,3 +4,5 @@ export { default as DailyForecastCard } from "./DailyForecastCard/DailyForecastC
 export { default as WindCard } from "./WindCard/WindCard";
 export { default as VisibilityCard } from "./VisibilityCard/VisibilityCard";
 export { default as PrecipitationCard } from "./PrecipitaionCard/PrecipitationCard";
+export { default as PressureCard } from "./PressureCard/PressureCard";
+export { default as SunMoonCard } from "./SunMoonCard/SunMoonCard";

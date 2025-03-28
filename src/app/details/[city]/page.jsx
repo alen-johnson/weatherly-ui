@@ -13,6 +13,8 @@ import {
   AirQualityCard,
   DailyForecastCard,
   PrecipitationCard,
+  PressureCard,
+  SunMoonCard,
   UvIndexCard,
   VisibilityCard,
   WindCard,
@@ -21,7 +23,6 @@ import { useFetchWeather } from "@/hooks/useFetchWeather";
 import { useFetchAirQuality } from "@/hooks/useFetchAirQuality";
 import { useFetchForecast } from "@/hooks/useFetchForecast";
 import { throttle } from "@/utils/helpers/throttle";
-
 
 export default function Page({ params }) {
   const { city } = use(params);
@@ -49,8 +50,8 @@ export default function Page({ params }) {
     error: forecastDataError,
   } = useFetchForecast(city);
 
-  console.log("weather=======>",weatherData)
-  console.log("forecast=====>",forecastData)
+  console.log("weather=======>", weatherData);
+  console.log("forecast=====>", forecastData);
 
   const isLoading =
     !weatherData ||
@@ -65,12 +66,12 @@ export default function Page({ params }) {
     (!weatherData?.location || weatherDataError || forecastDataError);
 
   //write reload fn here and pass it as prop for propper throttling
-    const handleReload = useCallback(
-      throttle(() => {
-        setRefreshKey((prevKey) => prevKey + 1);
-      }, 5000),
-      [setRefreshKey]
-    );
+  const handleReload = useCallback(
+    throttle(() => {
+      setRefreshKey((prevKey) => prevKey + 1);
+    }, 5000),
+    [setRefreshKey]
+  );
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -105,9 +106,17 @@ export default function Page({ params }) {
                 forecastData={forecastData.forecast.forecastday[0].hour}
               />
             )}
+            <PrecipitationCard
+              data={forecastData.forecast.forecastday[0]}
+              dewPoint={weatherData.current.dewpoint_c}
+            />
             <WindCard windData={weatherData.current} />
+
             <VisibilityCard visibleDistance={weatherData.current.vis_km} />
-            <PrecipitationCard data={forecastData.forecast.forecastday[0]} dewPoint={weatherData.current.dewpoint_c} />
+
+            <PressureCard />
+
+            <SunMoonCard />
           </div>
 
           <div className={styles.forecast}>
@@ -122,7 +131,7 @@ export default function Page({ params }) {
         </div>
       )}
       <div>
-        <FAB forecastData={forecastData} handleReload={handleReload}/>
+        <FAB forecastData={forecastData} handleReload={handleReload} />
       </div>
     </div>
   );
